@@ -1,0 +1,46 @@
+set(srcs
+    "bioc/bioc.c"
+    "bioc/lan_ctrl.c"
+    "bioc/lan_discover.c"
+    "bioc/bioc_iomux.c"
+    "bioc/bioc_timer.c"
+    "arch/misc/util.c"
+    "arch/esp32/arch_serial.c"
+    "arch/esp32/arch_os.c"
+    "arch/esp32/arch_dbg.c"
+    "wifi_net/wifi_softap.c"
+    "lcd/lcd.c"
+    "lcd/font.c"
+    "button/button.c"
+    "motor/stepper.c"
+    "motor/motor.c"
+    "app/app.c"
+    "app/uart_app.c"
+    "app/uart_parse.c"
+    "app/storage_app.c"
+    )
+    # "spi/spi_slave.c"
+    # "spi/bioc_spec.c"
+    # "gatt_server/gatts_server.c"
+    # "ring_buffer/ring_buffer.c"
+    # "knob/knob_switch.c"
+
+set(include_dirs
+    "bioc"
+    "gatt_server"
+    "arch/misc"
+    "arch/esp32"
+    "button"
+    "wifi_net"
+    "lcd"
+    "motor"
+    "app"
+    )
+    # "spi"
+    # "ring_buffer"
+    # "knob"
+
+idf_component_register(SRCS "${srcs}"
+    INCLUDE_DIRS "${include_dirs}"
+    REQUIRES nvs_flash bt esp_wifi lwip spiffs
+    )
